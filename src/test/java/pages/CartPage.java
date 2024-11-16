@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class CartPage extends BasePage {
 
     private final By TITLE = By.cssSelector(".title");
-    private final String ITEM_PATTERN = "//div[text()='%s']";
-    private final String PRICE_PATTERN = "//div[text()='%s']";
+    private final String ITEM_PATTERN = "//*[@class='cart_item_label']//div[text()='%s']";
+    private final String PRICE_PATTERN = "//*[@class='item_pricebar']//div[text()='%s']";
 
 
     public CartPage(WebDriver driver) {

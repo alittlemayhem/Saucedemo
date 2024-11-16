@@ -2,12 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage {
 
     private final By TITLE = By.cssSelector(".title");
     private final By CART_LINK = By.cssSelector(".shopping_cart_link");

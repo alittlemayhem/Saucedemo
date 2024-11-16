@@ -1,9 +1,10 @@
 package tests;
 
 import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertEquals;
 
-public class CheckoutTest extends BaseTest{
+public class CheckoutTest extends BaseTest {
 
     @Test
     public void testCheckoutWithAllFields() {
