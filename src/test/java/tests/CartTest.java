@@ -44,9 +44,18 @@ public class CartTest extends BaseTest {
 
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(cartPage.getTitle(), "Your Cart");
-        softAssert.assertEquals(cartPage.getProduct(products.get(1)), "Sauce Labs Bike Light");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(1)), "$9.99");
+        softAssert.assertEquals(
+                cartPage.getTitle(),
+                "Your Cart",
+                "Shopping cart is not opened.");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(1)),
+                "Sauce Labs Bike Light",
+                "Product 'Sauce Labs Bike Light' was not found.");
+        softAssert.assertEquals(
+                cartPage.getPrice(prices.get(1)),
+                "$9.99",
+                "Incorrect price is shown.");
         softAssert.assertAll();
     }
 
@@ -61,13 +70,28 @@ public class CartTest extends BaseTest {
         productsPage.switchToCart();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(cartPage.getTitle(), "Your Cart");
+        softAssert.assertEquals(
+                cartPage.getTitle(),
+                "Your Cart",
+                "Shopping cart is not opened.");
 
-        softAssert.assertEquals(cartPage.getProduct(products.get(0)), "Sauce Labs Backpack");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(0)), "$29.99");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(0)),
+                "Sauce Labs Backpack",
+                "Product 'Sauce Labs Backpack' was not found.");
+        softAssert.assertEquals(
+                cartPage.getPrice(prices.get(0)),
+                "$29.99",
+                "Incorrect price is shown for Sauce Labs Backpack");
 
-        softAssert.assertEquals(cartPage.getProduct(products.get(3)), "Sauce Labs Fleece Jacket");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(3)), "$49.99");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(3)),
+                "Sauce Labs Fleece Jacket",
+                "Product 'Sauce Labs Fleece Jacket' was not found.");
+        softAssert.assertEquals(
+                cartPage.getPrice(prices.get(3)),
+                "$49.99",
+                "Incorrect price is shown for Sauce Labs Fleece Jacket");
 
         softAssert.assertAll();
     }
@@ -83,21 +107,39 @@ public class CartTest extends BaseTest {
 
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(cartPage.getTitle(), "Your Cart");
-        softAssert.assertEquals(cartPage.getProduct(products.get(1)), "Sauce Labs Bike Light");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(1)), "$9.99");
-        softAssert.assertEquals(cartPage.getProduct(products.get(2)), "Sauce Labs Bolt T-Shirt");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(2)), "$15.99");
+        softAssert.assertEquals(
+                cartPage.getTitle(),
+                "Your Cart",
+                "Shopping cart is not opened.");
+        softAssert.assertEquals(cartPage.getProduct(products.get(1)),
+                "Sauce Labs Bike Light",
+                "Product 'Sauce Labs Bike Light' was not found.");
+        softAssert.assertEquals(cartPage.getPrice(prices.get(1)),
+                "$9.99",
+                "Incorrect price is shown for first product.");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(2)),
+                "Sauce Labs Bolt T-Shirt",
+                "Product 'Sauce Labs Bolt T-Shirt' was not found.");
+        softAssert.assertEquals(cartPage.getPrice(prices.get(2)),
+                "$15.99",
+                "Incorrect price is shown for second product.");
 
         List<WebElement> removeButton = driver.findElements(By.xpath("//button[text() = 'Remove']"));
 
-        softAssert.assertEquals(removeButton.size(), 2);
+        softAssert.assertEquals(
+                removeButton.size(),
+                2,
+                "Incorrect number of products are on the page.");
 
         cartPage.removeProduct(products.get(1));
         softAssert.assertTrue(driver.findElement(By.id("remove-sauce-labs-bolt-t-shirt")).isDisplayed());
 
         List<WebElement> buttonDeleteAfterDelete = driver.findElements(By.xpath("//button[text() = 'Remove']"));
-        softAssert.assertEquals(buttonDeleteAfterDelete.size(), 1);
+        softAssert.assertEquals(
+                buttonDeleteAfterDelete.size(),
+                1,
+                "Incorrect number of products are on the page.");
 
         softAssert.assertAll();
     }
@@ -113,27 +155,51 @@ public class CartTest extends BaseTest {
         productsPage.switchToCart();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(cartPage.getTitle(), "Your Cart");
+        softAssert.assertEquals(
+                cartPage.getTitle(),
+                "Your Cart",
+                "Shopping cart is not opened.");
 
-        softAssert.assertEquals(cartPage.getProduct(products.get(0)), "Sauce Labs Backpack");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(0)), "$29.99");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(0)),
+                "Sauce Labs Backpack",
+                "Product 'Sauce Labs Backpack' was not found.");
+        softAssert.assertEquals(
+                cartPage.getPrice(prices.get(0)),
+                "$29.99",
+                "Incorrect price is shown for first product.");
 
-        softAssert.assertEquals(cartPage.getProduct(products.get(3)), "Sauce Labs Fleece Jacket");
-        softAssert.assertEquals(cartPage.getPrice(prices.get(3)), "$49.99");
+        softAssert.assertEquals(
+                cartPage.getProduct(products.get(3)),
+                "Sauce Labs Fleece Jacket",
+                "Product 'Sauce Labs Fleece Jacket' was not found.");
+        softAssert.assertEquals(
+                cartPage.getPrice(prices.get(3)),
+                "$49.99",
+                "Incorrect price is shown for second product.");
 
         List<WebElement> removeButton = driver.findElements(By.xpath("//button[text() = 'Remove']"));
 
-        softAssert.assertEquals(removeButton.size(), 2);
+        softAssert.assertEquals(
+                removeButton.size(),
+                2,
+                "Incorrect number of products are on the page.");
 
         cartPage.removeProduct(products.get(3));
 
         List<WebElement> buttonDeleteAfterDelete = driver.findElements(By.xpath("//button[text() = 'Remove']"));
-        softAssert.assertEquals(buttonDeleteAfterDelete.size(), 1);
+        softAssert.assertEquals(
+                buttonDeleteAfterDelete.size(),
+                1,
+                "Product was not removed.");
 
         cartPage.removeProduct(products.get(0));
 
         buttonDeleteAfterDelete = driver.findElements(By.xpath("//button[text() = 'Remove']"));
-        softAssert.assertEquals(buttonDeleteAfterDelete.size(), 0);
+        softAssert.assertEquals(
+                buttonDeleteAfterDelete.size(),
+                0,
+                "Page is not empty.");
 
         softAssert.assertAll();
     }
