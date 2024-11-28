@@ -34,7 +34,7 @@ public class CartTest extends BaseTest {
         }
     };
 
-    @Test
+    @Test (testName = "Addition of one product to cart", description = "Check that one prodcut can be added to cart.")
     public void addOneProductToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -59,7 +59,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test (testName = "Addition of several products to cart", description = "Check that several products can be added to cart.")
     public void addSeveralProductsToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -96,7 +96,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test (testName = "Removal of product from cart", description = "Check that one product can be added and removed from cart.")
     public void removeOneProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -144,7 +144,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test (testName = "Removal of several products from cart", description = "Check that several products can be added and removed from cart.")
     public void removeSeveralProductsToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -204,7 +204,7 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test (testName = "Proceeding to checkout from cart", description = "Check that switching to Chevckout page happens.")
     public void checkSwitchToCheckout() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
