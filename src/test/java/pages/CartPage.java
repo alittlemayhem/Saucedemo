@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,11 +27,13 @@ public class CartPage extends BasePage {
         return driver.findElement(By.xpath(String.format(PRICE_PATTERN, price))).getText();
     }
 
+    @Step("Removing of product {product} from cart")
     public void removeProduct(String product) {
         String buttonId = "remove-".concat(String.join("-", product.toLowerCase().split("\\s")));
         driver.findElement(By.id(buttonId)).click();
     }
 
+    @Step("Proceeding to checkout.")
     public void goToCheckout() {
         driver.findElement(By.id("checkout")).click();
     }

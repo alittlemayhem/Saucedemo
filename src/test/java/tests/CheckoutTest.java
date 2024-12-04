@@ -1,12 +1,15 @@
 package tests;
 
+import io.qameta.allure.Description;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class CheckoutTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Checkout with valid data", description = "Check that next page of checkout opens after entering valid data.")
+    @Description("Check that next page of checkout - 'Checkout: Overview' - opens after entering valid data to form.")
     public void testCheckoutWithAllFields() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -19,42 +22,26 @@ public class CheckoutTest extends BaseTest {
                 "Next step of checkout did not happen,");
     }
 
-    @Test
-    public void testCheckoutWithoutFisrtName() {
+    @DataProvider(name = "checkoutData")
+    public Object[][] checkoutData() {
+        return new Object[][]{
+                {"", "Test last", "1234", "Error: First Name is required"},
+                {"Test Name", "", "1234", "Error: Last Name is required"},
+                {"Test Name", "Test last", "", "Error: Postal Code is required"},
+        };
+    }
+
+    @Test(dataProvider = "checkoutData", testName = "Check of negative checkout variations", description = "Check checkout with different invalid data.")
+    @Description("Test of negative scenarios - when either first name, or last name, or zipcode is NOT entered.")
+    public void testCheckoutWithInvalidData(String first_name, String last_name, String postcode, String expectedError) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.switchToCart();
         cartPage.goToCheckout();
-        checkoutPage.enterCheckoutData("", "Test last", "1234");
+        checkoutPage.enterCheckoutData(first_name, last_name, postcode);
         assertEquals(
                 checkoutPage.getError(),
-                "Error: First Name is required",
+                expectedError,
                 "Checkout without first name occurred");
-    }
-
-    @Test
-    public void testCheckoutWithoutLastName() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.switchToCart();
-        cartPage.goToCheckout();
-        checkoutPage.enterCheckoutData("Test Name", "", "1234");
-        assertEquals(
-                checkoutPage.getError(),
-                "Error: Last Name is required",
-                "Checkout without last name occurred");
-    }
-
-    @Test
-    public void testCheckoutWithoutPostcode() {
-        loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
-        productsPage.switchToCart();
-        cartPage.goToCheckout();
-        checkoutPage.enterCheckoutData("Test Name", "Test last", "");
-        assertEquals(
-                checkoutPage.getError(),
-                "Error: Postal Code is required",
-                "Checkout without postcode occurred");
     }
 }
