@@ -1,5 +1,7 @@
 package tests;
 
+
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -8,6 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class LoginTest extends BaseTest {
 
     @Test(testName = "Check of positive login", description = "Check login to Saucedemo with valid credentials.")
+    @Description("Positive test of login to Saucedemo with valid credentials.")
     public void checkLogin() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -29,6 +32,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginData", testName = "Check of negative login variations", description = "Check login to Saucedemo with different invalid credentials.")
+    @Description("Check login to Saucedemo with various invalid credentials - empty login/password fields, no creds, incorrect username/password")
     public void negativeTestsOfLogin(String user, String password, String expectedError) {
         loginPage.open();
         loginPage.login(user, password);

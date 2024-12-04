@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -8,6 +9,7 @@ import static org.testng.Assert.assertEquals;
 public class CheckoutTest extends BaseTest {
 
     @Test(testName = "Checkout with valid data", description = "Check that next page of checkout opens after entering valid data.")
+    @Description("Check that next page of checkout - 'Checkout: Overview' - opens after entering valid data to form.")
     public void testCheckoutWithAllFields() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -30,6 +32,7 @@ public class CheckoutTest extends BaseTest {
     }
 
     @Test(dataProvider = "checkoutData", testName = "Check of negative checkout variations", description = "Check checkout with different invalid data.")
+    @Description("Test of negative scenarios - when either first name, or last name, or zipcode is NOT entered.")
     public void testCheckoutWithInvalidData(String first_name, String last_name, String postcode, String expectedError) {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

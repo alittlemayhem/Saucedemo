@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -35,6 +36,7 @@ public class CartTest extends BaseTest {
     };
 
     @Test (testName = "Addition of one product to cart", description = "Check that one prodcut can be added to cart.")
+    @Description("Check that one product - Sauce Labs Bike Light - can be added to cart.")
     public void addOneProductToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -60,6 +62,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test (testName = "Addition of several products to cart", description = "Check that several products can be added to cart.")
+    @Description("Check that several products - Sauce Labs Backpack, Sauce Labs Fleece Jacket - can be added to cart.")
     public void addSeveralProductsToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -97,6 +100,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test (testName = "Removal of product from cart", description = "Check that one product can be added and removed from cart.")
+    @Description("Check that one product can be added and removed from cart, when there are multiple products")
     public void removeOneProductFromCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -145,6 +149,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test (testName = "Removal of several products from cart", description = "Check that several products can be added and removed from cart.")
+    @Description("Check that all items can be removed from shopping cart")
     public void removeSeveralProductsToCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -204,7 +209,8 @@ public class CartTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test (testName = "Proceeding to checkout from cart", description = "Check that switching to Chevckout page happens.")
+    @Test (testName = "Proceeding to checkout from cart", description = "Check that switching to Checkout page happens.")
+    @Description("Check that switching to Checkout page 'Checkout: Your Information' happens.")
     public void checkSwitchToCheckout() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -215,9 +221,10 @@ public class CartTest extends BaseTest {
         productsPage.switchToCart();
 
         cartPage.goToCheckout();
+        //Intentionally failing result of test to display results of Annotation Transformer work (SmokeTest.xml)
         assertEquals(
                 checkoutPage.getTitle(),
-                "Checkout: Your Information",
+                "CheckoutPage: Your Information",
                 "Did not switched to checkout");
     }
 }
