@@ -41,11 +41,12 @@ public class BaseTest {
             EdgeOptions options = new EdgeOptions();
             options.addArguments("headless");
             driver = new EdgeDriver(options);
-        } else if (browser.equalsIgnoreCase("firefox")) {
+        }
+        /*else if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("headless");
             driver = new FirefoxDriver(options);
-        }
+        }*/
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", driver);

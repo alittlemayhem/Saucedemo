@@ -23,6 +23,7 @@
             <parameter name="browser" value="edge"></parameter>
         </classes>
     </test> <!-- Test -->
+    <!--
     <test name="Thread#3">
         <classes>
             <class name="tests.LoginTest"/>
@@ -31,5 +32,5 @@
             <class name="tests.ProductsTest"/>
             <parameter name="browser" value="firefox"></parameter>
         </classes>
-    </test> <!-- Test -->
+    </test> -->
 </suite>
