@@ -221,10 +221,9 @@ public class CartTest extends BaseTest {
         productsPage.switchToCart();
 
         cartPage.goToCheckout();
-        //Intentionally failing result of test to display results of Annotation Transformer work (SmokeTest.xml)
         assertEquals(
                 checkoutPage.getTitle(),
-                "CheckoutPage: Your Information",
+                "Checkout: Your Information",
                 "Did not switched to checkout");
     }
 }

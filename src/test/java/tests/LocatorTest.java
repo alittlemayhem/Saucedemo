@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 public class LocatorTest extends BaseTest {
 
-    //Intentionally fail test to display work of Retry class (via annotation)
     @Test (testName = "Examples of each type of locator", description = "Check working with known types of locators.", retryAnalyzer = Retry.class)
     @Description("Check working with known types of locators.")
     public void locatorTest() {
@@ -14,8 +13,7 @@ public class LocatorTest extends BaseTest {
         driver.findElement(By.id("login-button"));
         driver.findElement(By.name("password"));
         driver.findElement(By.className("login_credentials"));
-        //driver.findElement(By.tagName("form"));
-        driver.findElement(By.tagName(""));
+        driver.findElement(By.tagName("form"));
 
         driver.findElement(By.id("user-name")).sendKeys("standard_user");
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
