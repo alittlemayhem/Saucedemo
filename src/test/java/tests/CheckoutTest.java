@@ -12,7 +12,7 @@ public class CheckoutTest extends BaseTest {
     @Description("Check that next page of checkout - 'Checkout: Overview' - opens after entering valid data to form.")
     public void testCheckoutWithAllFields() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.switchToCart();
         cartPage.goToCheckout();
         checkoutPage.enterCheckoutData("Test Name", "Test last", "1234");
@@ -35,7 +35,7 @@ public class CheckoutTest extends BaseTest {
     @Description("Test of negative scenarios - when either first name, or last name, or zipcode is NOT entered.")
     public void testCheckoutWithInvalidData(String first_name, String last_name, String postcode, String expectedError) {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         productsPage.switchToCart();
         cartPage.goToCheckout();
         checkoutPage.enterCheckoutData(first_name, last_name, postcode);

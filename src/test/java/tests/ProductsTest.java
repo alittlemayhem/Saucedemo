@@ -10,7 +10,7 @@ public class ProductsTest extends  BaseTest{
     @Description("Check that it is possible to open Shopping cart from Products page even when nothing was added to cart.")
     public void testSwitchingToCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.switchToCart();
 

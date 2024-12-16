@@ -39,7 +39,7 @@ public class CartTest extends BaseTest {
     @Description("Check that one product - Sauce Labs Bike Light - can be added to cart.")
     public void addOneProductToCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.addProductToCart(products.get(1));
         productsPage.switchToCart();
@@ -65,7 +65,7 @@ public class CartTest extends BaseTest {
     @Description("Check that several products - Sauce Labs Backpack, Sauce Labs Fleece Jacket - can be added to cart.")
     public void addSeveralProductsToCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.addProductToCart(products.get(0));
         productsPage.addProductToCart(products.get(3));
@@ -103,7 +103,7 @@ public class CartTest extends BaseTest {
     @Description("Check that one product can be added and removed from cart, when there are multiple products")
     public void removeOneProductFromCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.addProductToCart(products.get(1));
         productsPage.addProductToCart(products.get(2));
@@ -152,7 +152,7 @@ public class CartTest extends BaseTest {
     @Description("Check that all items can be removed from shopping cart")
     public void removeSeveralProductsToCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.addProductToCart(products.get(0));
         productsPage.addProductToCart(products.get(3));
@@ -213,7 +213,7 @@ public class CartTest extends BaseTest {
     @Description("Check that switching to Checkout page 'Checkout: Your Information' happens.")
     public void checkSwitchToCheckout() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
 
         productsPage.addProductToCart(products.get(0));
         productsPage.addProductToCart(products.get(3));
