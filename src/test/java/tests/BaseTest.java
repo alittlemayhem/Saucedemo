@@ -16,6 +16,7 @@ import pages.CheckoutPage;
 import pages.LoginPage;
 import pages.ProductsPage;
 import utils.AllureUtils;
+import utils.PropertyReader;
 
 import java.time.Duration;
 
@@ -28,8 +29,8 @@ public class BaseTest {
     CartPage cartPage;
     CheckoutPage checkoutPage;
 
-    String user = System.getProperty("user");
-    String password = System.getProperty("password");
+    String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    String password = System.getProperty("password", PropertyReader.getProperty("password"));
 
     @Parameters({"browser"})
     @BeforeMethod
@@ -49,9 +50,6 @@ public class BaseTest {
             options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
-
-        System.out.println(System.getProperty("user"));
-        System.out.println(System.getProperty("password"));
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", driver);
