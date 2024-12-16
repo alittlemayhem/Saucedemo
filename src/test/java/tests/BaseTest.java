@@ -28,6 +28,9 @@ public class BaseTest {
     CartPage cartPage;
     CheckoutPage checkoutPage;
 
+    String user = System.getProperty("user");
+    String password = System.getProperty("password");
+
     @Parameters({"browser"})
     @BeforeMethod
     @Description("Open browser selected for current test, set options if needed.")
@@ -46,6 +49,9 @@ public class BaseTest {
             options.addArguments("--headless");
             driver = new FirefoxDriver(options);
         }
+
+        System.out.println(System.getProperty("user"));
+        System.out.println(System.getProperty("password"));
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         context.setAttribute("driver", driver);

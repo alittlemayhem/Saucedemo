@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
     @Description("Positive test of login to Saucedemo with valid credentials.")
     public void checkLogin() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(user, password);
         assertEquals(
                 productsPage.getTitle(),
                 "Products",
