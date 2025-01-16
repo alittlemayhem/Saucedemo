@@ -60,6 +60,7 @@ public class BaseTest {
         checkoutPage = new CheckoutPage(driver);
     }
 
+    //Test run
     @AfterMethod(alwaysRun = true)
     @Description("Closing the browser.")
     public void tearDown(ITestResult result) {
